@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/57182150-628f-41d0-ac41-2c992b06ded5/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/test-promptopia",
+    "appService.deploySubpath": "."
+}
