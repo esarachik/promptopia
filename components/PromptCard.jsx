@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
+import classNames from 'classnames';
 
 const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   const { data: session } = useSession();
@@ -12,11 +13,8 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
 
   const [copied, setCopied] = useState("");
 
-  const handleProfileClick = () => {
-    console.log(post);
-
+  const handleProfileClick = () => {       
     if (post.creator._id === session?.user.id) return router.push("/profile");
-
     router.push(`/profile/${post.creator._id}?name=${post.creator.username}`);
   };
 
@@ -24,15 +22,13 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
     setCopied(post.prompt);
     navigator.clipboard.writeText(post.prompt);
     setTimeout(() => setCopied(false), 3000);
-  };
-
+  };  
+  const isClickable = session !== null;
+  
   return (
     <div className='prompt_card'>
-      <div className='flex justify-between items-start gap-5'>
-        <div
-          className='flex-1 flex justify-start items-center gap-3 cursor-pointer'
-          onClick={handleProfileClick}
-        >
+      <div className='flex justify-between items-start gap-5'>            
+        <div className={classNames(`flex-1 flex justify-start items-center gap-3 ${isClickable ? 'cursor-pointer' :''}`)} onClick={isClickable ? handleProfileClick : undefined}>
           <Image
             src={post.creator.image}
             alt='user_image'
