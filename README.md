@@ -33,3 +33,7 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
+-Install Azure App Service extension in VS Code 
+-In the Azure subscription Go to Settings/Resource Providers and Register OperationalInsights
+-Create App Service (Node)/Free
+
